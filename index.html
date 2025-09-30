@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gym Attendance Tracker</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+
+<h1 class="text-2xl font-bold mb-6">🏋️ Gym Attendance Tracker</h1>
+
+<div class="flex flex-col md:flex-row gap-6">
+
+  <!-- LEFT: summary -->
+  <aside class="w-full md:w-80 flex-shrink-0">
+    <div class="bg-white rounded-2xl shadow p-4 flex flex-col items-center">
+      <h2 class="text-lg font-semibold mb-2">📊 Attendance Summary</h2>
+      <div class="flex gap-2 mb-4">
+        <button id="weekBtn" class="px-3 py-1 rounded bg-blue-500 text-white text-sm">This Week</button>
+        <button id="monthBtn" class="px-3 py-1 rounded bg-gray-300 text-sm">This Month</button>
+      </div>
+      <div class="flex flex-col items-center w-full">
+        <div id="summary-text" class="text-gray-700 mb-2 text-lg font-semibold">No data yet.</div>
+        <div class="flex items-center justify-center w-full">
+          <canvas id="summaryChart" class="w-28 h-28"></canvas>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- RIGHT: calendar -->
+  <main class="flex-1 flex flex-col gap-4">
+    <div class="bg-white rounded-2xl shadow p-4 flex flex-col">
+      <div class="flex items-center gap-2 mb-4">
+        <select id="monthSelect" class="border rounded p-2"></select>
+        <select id="yearSelect" class="border rounded p-2"></select>
+      </div>
+
+      <div class="grid grid-cols-7 gap-2 text-center font-semibold text-gray-600 mb-2">
+        <div>Sun</div><div>Mon</div><div>Tue</div>
+        <div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+      </div>
+
+      <div id="calendar"></div>
+    </div>
+
+    <!-- Comment Section -->
+    <div id="comment-section" class="mt-4 hidden bg-white p-3 rounded shadow w-full md:w-80">
+      <h3 class="font-semibold mb-2">Add Comment</h3>
+      <textarea id="commentInput" class="w-full border rounded p-2" rows="2" placeholder="Enter comment"></textarea>
+      <div class="mt-2 flex justify-end gap-2">
+        <button id="saveComment" class="px-3 py-1 bg-blue-500 text-white rounded">Save</button>
+        <button id="cancelComment" class="px-3 py-1 bg-gray-300 text-black rounded">Cancel</button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="idb.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
